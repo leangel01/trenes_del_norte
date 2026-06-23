@@ -19,7 +19,7 @@ import routerProvider, {
 } from "@refinedev/react-router";
 import { liveProvider } from "@refinedev/supabase";
 import { App as AntdApp } from "antd";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router";
+import { HashRouter, Outlet, Route, Routes } from "react-router";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
@@ -40,8 +40,7 @@ import { supabaseClient } from "./providers/supabase-client";
 
 function App() {
   return (
-    <BrowserRouter>
-      <GitHubBanner />
+    <HashRouter>
       <RefineKbarProvider>
         <ColorModeContextProvider>
           <AntdApp>
@@ -158,7 +157,7 @@ function App() {
           </AntdApp>
         </ColorModeContextProvider>
       </RefineKbarProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
