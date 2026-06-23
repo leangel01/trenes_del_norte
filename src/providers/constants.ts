@@ -1,3 +1,4 @@
-export const SUPABASE_URL = "https://iwdfzvfqbtokqetmbmbp.supabase.co";
-export const SUPABASE_KEY =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYzMDU2NzAxMCwiZXhwIjoxOTQ2MTQzMDEwfQ._gr6kXGkQBi9BM9dx5vKaNKYj_DJN1xlkarprGpM_fU";
+const _env = typeof import.meta !== "undefined" && (import.meta as any).env ? (import.meta as any).env : process.env;
+
+export const SUPABASE_URL = _env.VITE_SUPABASE_URL;
+export const SUPABASE_KEY = _env.VITE_SUPABASE_KEY;
