@@ -37,6 +37,9 @@ import {
 import authProvider from "./providers/auth";
 import { dataProvider } from "./providers/data";
 import { supabaseClient } from "./providers/supabase-client";
+import { DashboardOutlined } from "@ant-design/icons";
+import { VisorPage } from "./pages/visor";
+import { CustomLayout } from "./components/layout";
 
 function App() {
   return (
@@ -72,6 +75,14 @@ function App() {
                       canDelete: true,
                     },
                   },
+                  {
+                    name: "proyectos",
+                    list: "/visor",
+                    meta: {
+                      label: "Visor",
+                      icon: <DashboardOutlined />,
+                    },
+                  },
                 ]}
                 options={{
                   syncWithLocation: true,
@@ -86,18 +97,15 @@ function App() {
                         key="authenticated-inner"
                         fallback={<CatchAllNavigate to="/login" />}
                       >
-                        <ThemedLayout
-                          Header={Header}
-                          Sider={(props) => <ThemedSider {...props} fixed />}
-                        >
+                        <CustomLayout>
                           <Outlet />
-                        </ThemedLayout>
+                        </CustomLayout>
                       </Authenticated>
                     }
                   >
                     <Route
                       index
-                      element={<NavigateToResource resource="blog_posts" />}
+                      element={<NavigateToResource resource="proyectos" />}
                     />
                     <Route path="/blog-posts">
                       <Route index element={<BlogPostList />} />
@@ -111,6 +119,7 @@ function App() {
                       <Route path="edit/:id" element={<CategoryEdit />} />
                       <Route path="show/:id" element={<CategoryShow />} />
                     </Route>
+                    <Route path="/visor" element={<VisorPage />} />
                     <Route path="*" element={<ErrorComponent />} />
                   </Route>
                   <Route
